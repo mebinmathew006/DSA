@@ -1,15 +1,17 @@
-def quick(arr):
+def quick_sort(arr):
     if len(arr)<=1:
         return arr
         
-    pivot = arr[0]
+    pivot = arr[len(arr)//2]
+    left = [x for x in arr if x['age'] < pivot['age']]
+    right = [x for x in arr if x['age'] > pivot['age']]
+    middle =[x for x in arr if x['age'] == pivot['age']]
+    return quick_sort(left)+middle+quick_sort(right)
     
-    left = [x for x in arr[1:] if x < pivot]
-    right= [x for x in arr[1:] if x >= pivot]
-    
-    return quick(left)+[pivot]+quick(right)
-    
-arr=[55,56,56,9812,16452,5465,454,4,8,84,58454,884,584,45,484,756]
+   
+arr =[{'name': 'Bob', 'age': 20}, {'name': 'Alice', 'age': 25}, {'name': 'Charlie', 'age': 30}]
 
-sorted =quick(arr)
-print(sorted)
+print(quick_sort(arr))
+
+ 
+    
