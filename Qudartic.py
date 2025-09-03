@@ -10,7 +10,7 @@ class HashTable:
         index = self.__hash(key)
         i=0
         while self.table[index]!=None and self.table[index][0]!=key:
-            index = (index+i*i)%self.size
+            index = (self.__hash(key)+i*i)%self.size
             if index == i:
                 raise Exception('Table is full')
             i+=1
